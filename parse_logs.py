@@ -620,7 +620,7 @@ class Analyzer:
     cumulative_tasks = 0
     stage_cumulative_tasks = []
     for stage in sorted(self.stages.values(), key = lambda x: x.start_time):
-      all_tasks.extend(sorted(stage.tasks, key = lambda x: x.start_time))
+      all_tasks.extend(sorted(stage.tasks, key = lambda x: x.executor_id))
       cumulative_tasks = cumulative_tasks + len(stage.tasks)
       stage_cumulative_tasks.append(str(cumulative_tasks))
 

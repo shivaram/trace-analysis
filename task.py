@@ -21,7 +21,10 @@ class Task:
     self.executor_deserialize_time = 0 #int(items_dict["EXECUTOR_DESERIALIZE_TIME"])
     self.scheduler_delay = (self.finish_time - self.executor_run_time -
       self.executor_deserialize_time - self.start_time)
-    self.gc_time = 0 #int(items_dict["GC_TIME"])
+    if "GC_TIME" in items_dict:
+      self.gc_time = int(items_dict["GC_TIME"])
+    else:
+      self.gc_time = 0
     self.executor_id = int(items_dict["EXECUTOR_ID"])
 
     # Estimate serialization and deserialization time based on samples.
